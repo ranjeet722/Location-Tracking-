@@ -1,0 +1,28 @@
+<!DO<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Location Tracking Link</title>
+</head>
+<body>
+  <h1>Location Tracking</h1>
+  <button onclick="getLocation()">Create Tracking Link</button>
+  <br><br>
+  <input type="text" id="link" readonly style="width:100%; padding:10px;" />
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lng = position.coords.longitude.toFixed(6);
+          document.getElementById("link").value = `https://www.google.com/maps?q=${lat},${lng}`;
+        }, () => {
+          alert("Location access denied!");
+        });
+      } else {
+        alert("Geolocation is not supported.");
+      }
+    }
+  </script>
+</body>
+</html>￼Enter
